@@ -10,5 +10,5 @@ port=process.env.PORT
 app.use("/api/contacts",require("./routes/contactroutes"))
 
 app.listen(port,()=>{
-    console.log("its working")
+    console.log("its working 1000")
 })
