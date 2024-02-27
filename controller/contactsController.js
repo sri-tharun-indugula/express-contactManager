@@ -1,14 +1,18 @@
-const getContacts = (req, res) => {
-  res.status(200).json({ message: "get call from route controller" });
-};
+const expressAsyncHandler=require('express-async-handler');
 
-const getSpecificcontact = (req, res) => {
+
+
+const getContacts = expressAsyncHandler(async(req, res) => {
+  res.status(200).json({ message: "get call from route controller" });
+});
+
+const getSpecificcontact = expressAsyncHandler(async(req, res) => {
   res
     .status(200)
     .json({ message: `get call with specific id:${req.params.id}` });
-};
+});
 
-const createContact = (req, res) => {
+const createContact = expressAsyncHandler(async(req, res) => {
   const { name, email } = req.body;
   if (name && email) {
     console.log(req.body);
@@ -24,19 +28,19 @@ const createContact = (req, res) => {
     res.status(400);
     throw new Error("All fields mandatory !");
   }
-};
+});
 
-const changeaSpecificContact = (req, res) => {
+const changeaSpecificContact = expressAsyncHandler(async(req, res) => {
   res
     .status(200)
     .json({ message: `put call with specific id:${req.params.id}` });
-};
+});
 
-const deleteSpecificContact = (req, res) => {
+const deleteSpecificContact = expressAsyncHandler(async(req, res) => {
   res
     .status(200)
     .json({ message: `delete call with specific id:${req.params.id}` });
-};
+});
 
 module.exports = {
   getContacts,
