@@ -13,8 +13,8 @@ const getSpecificcontact = expressAsyncHandler(async(req, res) => {
 });
 
 const createContact = expressAsyncHandler(async(req, res) => {
-  const { name, email } = req.body;
-  if (name && email) {
+  const { name, email,phone } = req.body;
+  if (name && email&&phone) {
     console.log(req.body);
     res
       .status(201)
@@ -22,6 +22,7 @@ const createContact = expressAsyncHandler(async(req, res) => {
         message: "post call from route controller22",
         name: name,
         email: email,
+        phone:phone
       });
   } else {
     console.log("123");
