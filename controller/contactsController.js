@@ -8,9 +8,14 @@ const getContacts = expressAsyncHandler(async(req, res) => {
 });
 
 const getSpecificcontact = expressAsyncHandler(async(req, res) => {
+  const contacts= await Contact.findById(req.params.id)
+  if(!contacts){
+    res.status(404);
+    throw new Error("Contact not found")
+  }
   res
     .status(200)
-    .json({ message: `get call with specific id:${req.params.id}` });
+    .json(contacts);
 });
 
 const createContact = expressAsyncHandler(async(req, res) => {
