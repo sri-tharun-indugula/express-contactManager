@@ -3,6 +3,7 @@ const errorHandler = require("./middleware/errorhandler");
 const app = express();
 const connectDB=require('./config/dbConnection')
 const dotenv = require("dotenv").config();
+const cors=require('cors')
 connectDB();
 // const { MongoClient, ServerApiVersion } = require('mongodb');
 // // const dotenv = require("dotenv").config();
@@ -33,6 +34,7 @@ connectDB();
 // run().catch(console.dir);
 
 port = process.env.PORT;
+app.use(cors())
 app.use(express.json());
 app.use("/api/contacts", require("./routes/contactroutes"));
 app.use(errorHandler);
